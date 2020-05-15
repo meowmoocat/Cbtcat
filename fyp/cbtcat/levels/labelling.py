@@ -3,7 +3,7 @@ from datetime import datetime
 from django.shortcuts import render
 from django.views.generic import View
 
-from ..models import CbtcatUser, L5Ans, Lvl5UserData
+from ..models import CbtcatUser, L4Ans, Lvl4UserData
 
 
 class Labelling(View):
@@ -12,7 +12,7 @@ class Labelling(View):
     def post(self, request):
         user = request.user
         cbtcat_user = CbtcatUser.objects.get(username=user.username)
-        answers, created = L5Ans.objects.get_or_create(username=user.username, finished=False)
+        answers, created = L4Ans.objects.get_or_create(username=user.username, finished=False)
         question = answers.current_question
         feedback = ''
 
@@ -51,7 +51,8 @@ class Labelling(View):
             answer = answer.lower()
             if len(answer) < 25:
                 feedback = 'Try write a little more\n'
-            elif 'yes' not in answer and 'complicated' not in answer:
+            elif 'yes' not in answer and 'complicated' not in answer and 'speed' not in answer and \
+                    'compare' not in answer and 'other' not in answer:
                 feedback = 'Think about it a little more'
             else:
                 feedback = 'Correct'
@@ -78,8 +79,8 @@ class Labelling(View):
             else:
                 answers.current_question = question + 1
 
-                user_data = Lvl5UserData.objects.get(table_created=True)
-                if L5Ans.objects.filter(username=cbtcat_user.username, finished=True).exists():
+                user_data = Lvl4UserData.objects.get(table_created=True)
+                if L4Ans.objects.filter(username=cbtcat_user.username, finished=True).exists():
                     finished = user_data.total_times_finished
                     user_data.total_times_finished = finished + 1
                 else:
@@ -91,7 +92,7 @@ class Labelling(View):
                 answers.finished_on = datetime.now()
                 answers.finished = True
                 answers.save()
-                cbtcat_user.current_level = 6
+                cbtcat_user.current_level = 5
                 cbtcat_user.save()
                 return render(request, 'index.html', {'level': cbtcat_user.current_level})
 
@@ -101,10 +102,10 @@ class Labelling(View):
     def get(self, request):
         user = request.user
         cbtcat_user = CbtcatUser.objects.get(username=user.username)
-        answers, created = L5Ans.objects.get_or_create(username=cbtcat_user.username, finished=False)
-        user_data, created1 = Lvl5UserData.objects.get_or_create(table_created=True)
+        answers, created = L4Ans.objects.get_or_create(username=cbtcat_user.username, finished=False)
+        user_data, created1 = Lvl4UserData.objects.get_or_create(table_created=True)
 
-        if L5Ans.objects.filter(username=cbtcat_user.username, finished=True).exists():
+        if L4Ans.objects.filter(username=cbtcat_user.username, finished=True).exists():
             started = user_data.total_times_started
             user_data.total_times_started = started + 1
         else:

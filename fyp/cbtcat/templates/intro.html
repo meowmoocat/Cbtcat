@@ -4,6 +4,12 @@
 {% if feedback %}
 <p>{{feedback}}</p>
 {% endif %}
+
+<br>
+<p>Choose the option which best describes:</p>
+<br>
+<p><b>Your answers cannot be viewed by anyone</b></p>
+
 {% if question == 1 %}
 <p>Imagining severe consequences from a relatively minor event.</p>
 {% elif question == 2 %}
@@ -17,6 +23,7 @@
 <p>This occurs when people think something happens all the time or never and has negative consequences for them.
     The words 'always' or 'never' will generally occur in the beliefs.</p>
 {% endif %}
+<br>
 
 <form action="{% url 'intro'%}" method="post">
     {% csrf_token %}
