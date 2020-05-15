@@ -27,7 +27,7 @@ class Mindreading(View):
         elif question == 2:
             answer = request.POST['answer2']
             answer = answer.lower()
-            if len(answer) < 25:
+            if len(answer) < 20:
                 feedback = 'Try write a little more\n'
             elif 'dis' not in answer and 'not' not in answer and "won't" not in answer and 'wont' not in answer:
                 feedback = 'Think about it a little more'
@@ -49,7 +49,7 @@ class Mindreading(View):
         elif question == 4:
             answer = request.POST['answer4']
             answer = answer.lower()
-            if len(answer) < 25:
+            if len(answer) < 20:
                 feedback = 'Try write a little more\n'
             elif 'yes' not in answer and 'friend' not in answer and 'like' not in answer:
                 feedback = 'Think about it a little more'

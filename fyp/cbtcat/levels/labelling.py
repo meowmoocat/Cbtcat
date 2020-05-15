@@ -27,7 +27,7 @@ class Labelling(View):
         elif question == 2:
             answer = request.POST['answer2']
             answer = answer.lower()
-            if len(answer) < 17:
+            if len(answer) < 12:
                 feedback = 'Try write a little more\n'
             elif 'worthless' not in answer:
                 feedback = 'Think about it a little more'
@@ -38,7 +38,7 @@ class Labelling(View):
         elif question == 3:
             answer = request.POST['answer3']
             answer = answer.lower()
-            if len(answer) < 7:
+            if len(answer) < 4:
                 feedback = 'Try write a little more\n'
             elif 'feeling' not in answer:
                 feedback = 'Think about it a little more'

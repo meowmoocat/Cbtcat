@@ -29,6 +29,8 @@ class UserRegisterFormView(View):
             password2 = form.cleaned_data['password2']
             consent = form.cleaned_data['consent']
 
+            if password1 and password2 and password1 != password2:
+                return render(request, 'registration.html', {'error': 'Passwords do not match'})
             user.set_password(form.check_password_match(password1, password2))
             user.save()
             cbtcat_user, created = CbtcatUser.objects.get_or_create(user=user, username=username)
@@ -42,7 +44,7 @@ class UserRegisterFormView(View):
             else:
                 user_log = Login.objects.create(username=username)
                 return render(request, 'registration.html', {'error': 'signed up'})
-        return render(request, 'registration.html', {'error': 'error logging in'})
+        return render(request, 'registration.html', {'error': 'error logging in, try a different username'})
 
 
 def user_login(request):

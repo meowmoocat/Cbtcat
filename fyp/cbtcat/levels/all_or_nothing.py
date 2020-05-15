@@ -49,7 +49,7 @@ class AllOrNothing(View):
         elif question == 4:
             answer = request.POST['answer4']
             answer = answer.lower()
-            if len(answer) < 25:
+            if len(answer) < 20:
                 feedback = 'Try write a little more\n'
             elif 'high' not in answer and 'perfectly' not in answer and 'balanced' not in answer and 'good' not in answer:
                 feedback = 'Think about it a little more'

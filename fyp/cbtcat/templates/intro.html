@@ -1,14 +1,15 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+
+<p><b>Your answers cannot be viewed by anyone</b></p>
+
 {% if feedback %}
 <p>{{feedback}}</p>
 {% endif %}
 
 <br>
 <p>Choose the option which best describes:</p>
-<br>
-<p><b>Your answers cannot be viewed by anyone</b></p>
 
 {% if question == 1 %}
 <p>Imagining severe consequences from a relatively minor event.</p>

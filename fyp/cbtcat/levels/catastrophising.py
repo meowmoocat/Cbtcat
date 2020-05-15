@@ -27,9 +27,10 @@ class Catastrophising(View):
         elif question == 2:
             answer = request.POST['answer2']
             answer = answer.lower()
-            if len(answer) < 25:
+            if len(answer) < 15:
                 feedback = 'Try write a little more\n'
-            elif 'sleep' not in answer:
+            elif 'sleep' not in answer and 'comfortable' not in answer and 'chair' not in answer and \
+                    'never' not in answer and 'couch' not in answer:
                 feedback = 'Think about it a little more'
             else:
                 feedback = 'Correct'
@@ -49,7 +50,7 @@ class Catastrophising(View):
         elif question == 4:
             answer = request.POST['answer4']
             answer = answer.lower()
-            if len(answer) < 25:
+            if len(answer) < 20:
                 feedback = 'Try write a little more\n'
             elif 'anywhere' not in answer and 'nowhere' not in answer and 'couch' not in answer and 'comfortable' not in answer:
                 feedback = 'Think about it a little more'

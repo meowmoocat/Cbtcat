@@ -67,7 +67,8 @@ class Lvl3UserData(admin.ModelAdmin):
 
 @admin.register(Lvl4UserData)
 class Lvl4UserData(admin.ModelAdmin):
-    pass
+    list_display = ('num_unique_users_started', 'num_unique_users_started', 'num_unique_users_completed',
+                    'total_times_started', 'total_times_finished')
 
 
 @admin.register(Lvl5UserData)

@@ -5,6 +5,7 @@
 
 <div class="container-fluid">
     <div class="col-sm-10 ">
+        <p><b>Your answers cannot be viewed by anyone</b></p>
         {% if feedback %}
         <p>{{feedback}}</p>
         {% endif %}
@@ -15,7 +16,6 @@
         </p>
 
         <img src="{% static 'images/sad-ed.jpg' %}" alt="Sad Ed">
-        <p><b>Your answers cannot be viewed by anyone</b></p>
 
         {% if question == 1 %}
         <p>Question 1</p>
