@@ -1,0 +1,69 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+{% if feedback %}
+<p>{{feedback}}</p>
+{% endif %}
+{% if question == 1 %}
+<p>Imagining severe consequences from a relatively minor event.</p>
+{% elif question == 2 %}
+<p>This is generally thinking that others have negative thoughts or intentions in relation to you.</p>
+{% elif question == 3 %}
+<p>This can be seen easiest in people with low self-esteem can view themselves as less than others.</p>
+{% elif question == 4 %}
+<p>This is best explained in an example, if in a project one part is a failure then the whole project is a failure,
+    it's either perfect or a disaster.</p>
+{% elif question == 5 %}
+<p>This occurs when people think something happens all the time or never and has negative consequences for them.
+    The words 'always' or 'never' will generally occur in the beliefs.</p>
+{% endif %}
+
+<form action="{% url 'intro'%}" method="post">
+    {% csrf_token %}
+<div class="form-group">
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="options" id="labelling" value="labelling">
+        <label class="form-check-label" for="labelling">
+            Labelling
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="options" id="overgeneralisation" value="overgeneralisation">
+        <label class="form-check-label" for="overgeneralisation">
+            Over Generalisation
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="options" id="allornothing" value="allornothing">
+        <label class="form-check-label" for="allornothing">
+        All or Nothing
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="options" id="jumptoconclusions" value="jumptoconclusions">
+        <label class="form-check-label" for="jumptoconclusions">
+            Jump To Conclusions
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="options" id="catastrophising" value="catastrophising">
+        <label class="form-check-label" for="catastrophising">
+            Catastrophising
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="options" id="mindreading" value="mindreading">
+        <label class="form-check-label" for="mindreading">
+            Mind Reading
+        </label>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+</div>
+</form>
+
+
+{% endblock %}

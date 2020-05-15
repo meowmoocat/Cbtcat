@@ -1,0 +1,71 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+{% load static %}
+
+{% if level >= 1 %}
+<a href="{% url 'intro' %}">
+{% if level == 1 %}
+<img src="{% static 'images/angry_cat_1.jpg' %}" alt="Angry Cat">
+{% else %}
+<img src="{% static 'images/happy_cat_1.jpg' %}" alt="Happy Cat">
+{% endif %}
+Level 1</a>
+{% endif %}
+
+<br>
+{% if level >= 2 %}
+<a href="{% url 'catastrophising' %}">
+{% if level == 2 %}
+<img src="{% static 'images/angry-jack.jpg' %}" alt="Angry Jack">
+{% else %}
+<img src="{% static 'images/happy-jack.jpg' %}" alt="Happy Jack">
+{% endif %}
+Level 2</a>
+{% endif %}
+
+<br>
+{% if level >= 3 %}
+<a href="{% url 'all-or-nothing' %}">
+{% if level == 3 %}
+<img src="{% static 'images/sad-susie.jpg' %}" alt="Sad Susie">
+{% else %}
+<img src="{% static 'images/happy-susie.jpg' %}" alt="Happy Susie">
+{% endif %}
+Level 3</a>
+{% endif %}
+
+<br>
+{% if level >= 4 %}
+<a href="{% url 'labelling' %}">
+{% if level == 4 %}
+<img src="{% static 'images/sad-ed.jpg' %}" alt="Sad Ed">
+{% else %}
+<img src="{% static 'images/happy-ed.jpg' %}" alt="Happy Ed">
+{% endif %}
+Level 4</a>
+{% endif %}
+
+<br>
+{% if level >= 5 %}
+<a href="{% url 'overgeneralisation' %}">
+{% if level == 5 %}
+<img src="{% static 'images/angry-beth.jpg' %}" alt="Angry Beth">
+{% else %}
+<img src="{% static 'images/happy-beth.jpg' %}" alt="Happy Beth">
+{% endif %}
+Level 5</a>
+{% endif %}
+
+<br>
+{% if level >= 6 %}
+<a href="{% url 'mindreading' %}">
+{% if level == 6 %}
+<img src="{% static 'images/sad-jim.jpg' %}" alt="Sad Jim">
+{% else %}
+<img src="{% static 'images/happy-jim.jpg' %}" alt="Sad Jim">
+{% endif %}
+Level 6</a>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,208 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+{% load static %}
+
+<div class="container-fluid">
+    <div class="col-sm-10 ">
+        {% if feedback %}
+        <p>{{feedback}}</p>
+        {% endif %}
+        <p></p>
+        <p>
+            My bowl never has food in it! Why does this always happen to me.
+            I'm never fed on time, they always forget about me.
+        </p>
+
+        <img src="{% static 'images/angry-beth.jpg' %}" alt="Angry Beth">
+
+        {% if question == 1 %}
+        <p>Question 1</p>
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+        <form action="{% url 'overgeneralisation'%}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="form-check"><input class="form-check-input" type="radio" name="options" id="labelling"
+                                               value="labelling">
+                    <label class="form-check-label" for="labelling">
+                        Labelling
+                    </label>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="options"
+                                               id="overgeneralisation" value="overgeneralisation">
+                    <label class="form-check-label" for="overgeneralisation">
+                        Over Generalisation
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="options" id="allornothing" value="allornothing">
+                    <label class="form-check-label" for="allornothing">
+                        All or Nothing
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="options" id="jumptoconclusions"
+                           value="jumptoconclusions">
+                    <label class="form-check-label" for="jumptoconclusions">
+                        Jump To Conclusions
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="options" id="catastrophising"
+                           value="catastrophising">
+                    <label class="form-check-label" for="catastrophising">
+                        Catastrophising
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="options" id="mindreading" value="mindreading">
+                    <label class="form-check-label" for="mindreading">
+                        Mind Reading
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </form>
+        {% endif %}
+        
+        {% if question == 2 %}
+        <p>Question 2</p>
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+        <div class="panel-body">
+            <form class="form-vertical" role="form" action="{% url 'overgeneralisation'%}" method="post"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="control-label" for="answer2">
+                        What is the negative thought experienced by Beth?
+                    </label>
+                    <div>
+                        <textarea class="col-lg-12" id="answer2" maxlength="300" name="answer2"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endif %}
+        
+        {% if question == 3 %}
+        <p>Question 3</p>
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+        <div class="panel-body">
+            <form class="form-vertical" role="form" action="{% url 'overgeneralisation'%}" method="post"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="control-label" for="answer3">
+                        Is Beth basing this thought of facts or feelings?
+                    </label>
+                    <div>
+                        <textarea class="col-lg-12" id="answer3" maxlength="300" name="answer3"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endif %}
+
+        {% if question == 4 %}
+        <p>Question 4</p>
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+        <div class="panel-body">
+            <form class="form-vertical" role="form" action="{% url 'overgeneralisation'%}" method="post"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="control-label" for="answer4">
+                        Is Beth making any assumptions?
+                    </label>
+                    <div>
+                        <textarea class="col-lg-12" id="answer4" maxlength="300" name="answer4"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endif %}
+
+        {% if question == 5 %}
+        <p>Question 5</p>
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+        <div class="panel-body">
+            <form class="form-vertical" role="form" action="{% url 'overgeneralisation'%}" method="post"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="control-label" for="answer5">
+                        Could Beths thoughts be an exaggeration of what's true?
+                    </label>
+                    <div>
+                        <textarea class="col-lg-12" id="answer5" maxlength="300" name="answer5"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endif %}
+
+        {% if question == 6 %}
+        <p>Question 6</p>
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+        <div class="panel-body">
+            <form class="form-vertical" role="form" action="{% url 'overgeneralisation'%}" method="post"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="control-label" for="answer6">
+                        Is Beths thought a likely scenario or is it worst case?
+                    </label>
+                    <div>
+                        <textarea class="col-lg-12" id="answer6" maxlength="300" name="answer6"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+
+{% endblock %}
