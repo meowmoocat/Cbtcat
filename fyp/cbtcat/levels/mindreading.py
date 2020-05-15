@@ -91,7 +91,8 @@ class Mindreading(View):
                 answers.finished_on = datetime.now()
                 answers.finished = True
                 answers.save()
-                cbtcat_user.current_level = 7
+                if cbtcat_user.current_level == 6:
+                    cbtcat_user.current_level = 7
                 cbtcat_user.save()
                 return render(request, 'index.html', {'level': cbtcat_user.current_level})
 

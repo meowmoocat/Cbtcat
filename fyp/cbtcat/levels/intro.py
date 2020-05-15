@@ -43,7 +43,8 @@ class Intro(View):
             answers.finished_on = datetime.now()
             answers.finished = True
             answers.save()
-            cbtcat_user.current_level = 2
+            if cbtcat_user.current_level == 1:
+                cbtcat_user.current_level = 2
             cbtcat_user.save()
             return render(request, 'index.html', {'level': cbtcat_user.current_level})
         else:
