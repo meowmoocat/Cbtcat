@@ -73,7 +73,7 @@ class Overgeneralisation(View):
             answer = answer.lower()
             if len(answer) < 10:
                 feedback = 'Try write a little more\n'
-            elif 'worse' not in answer:
+            elif 'worse' not in answer and 'worst' not in answer:
                 feedback = 'Think about it a little more'
             else:
                 answers.current_question = question + 1
